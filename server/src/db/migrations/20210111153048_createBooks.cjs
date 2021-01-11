@@ -1,0 +1,24 @@
+/**
+ * @typedef {import("knex")} Knex
+ */
+
+/**
+ * @param {Knex} knex
+ */
+exports.up = async (knex) => {
+  return knex.schema.createTable("books", (table) => {
+    table.bigIncrements("id").notNullable()
+    table.string("title").notNullable()
+    table.string("author").notNullable()
+    table.integer("pageCount").notNullable()
+    table.string("description")
+    table.boolean("fiction")
+  })
+};
+
+/**
+ * @param {Knex} knex
+ */
+exports.down = function (knex) {
+  return knex.schema.dropTableIfExists("books")
+};

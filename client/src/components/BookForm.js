@@ -25,7 +25,7 @@ const BookForm = (props) => {
         body: JSON.stringify(bookRecord)
       })
       if (!response.ok) {
-        if(response.status == 422) {
+        if(response.status === 422) {
           const body = await response.json()
           const newErrors = translateServerErrors(body.errors)
           return setErrors(newErrors)

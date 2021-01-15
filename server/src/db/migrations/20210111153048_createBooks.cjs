@@ -13,6 +13,8 @@ exports.up = async (knex) => {
     table.integer("pageCount").notNullable()
     table.string("description")
     table.boolean("fiction")
+    table.timestamp("createdAt").notNullable().defaultTo(knex.fn.now())
+    table.timestamp("updatedAt").notNullable().defaultTo(knex.fn.now())
   })
 };
 
